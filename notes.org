@@ -1,0 +1,5 @@
+#+title: Notes
+
+* TODO
+** [ ] Throttle messages when > 10
+** [ ] AI Integration
