@@ -68,7 +68,7 @@ class MyBot(irc.bot.SingleServerIRCBot):
 def main():
     try:
         init_storage()
-        bot = MyBot("#wispers", "botboy", "irc.libera.chat")
+        bot = MyBot("#wispers-test", "botboy-2", "irc.libera.chat")
         bot.start()
     except KeyboardInterrupt:
         print("[*] Exiting...")
