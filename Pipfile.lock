@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c44901041c6e90d2a68dfbbd674418d0650b992410a0a68688d0fe93e19e528f"
+            "sha256": "071def7e1f1abedacb741cdfe9d6275c8a1fd5a841a6f14e3320348ab8712bf6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,11 +34,11 @@
         },
         "click": {
             "hashes": [
-                "sha256:4be4b1af8d665c6d942909916d31a213a106800c47d0eeba73d34da3cbc11367",
-                "sha256:e576aa487d679441d7d30abb87e1b43d24fc53bffb8758443b1a9e1cee504548"
+                "sha256:48ee849951919527a045bfe3bf7baa8a959c423134e1a5b98c05c20ba75a1cbd",
+                "sha256:fa244bb30b3b5ee2cae3da8f55c9e5e0c0e86093306301fb418eb9dc40fbded5"
             ],
             "index": "pypi",
-            "version": "==8.1.5"
+            "version": "==8.1.6"
         },
         "cloudpickle": {
             "hashes": [
@@ -129,6 +129,12 @@
             "markers": "python_version >= '3.9'",
             "version": "==2023.7.0"
         },
+        "docopt": {
+            "hashes": [
+                "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"
+            ],
+            "version": "==0.6.2"
+        },
         "fastparquet": {
             "hashes": [
                 "sha256:079637c50fd03c0724b7858542b5d45de80105f9fa89d8475ba73bba5c03e240",
@@ -207,6 +213,14 @@
             ],
             "index": "pypi",
             "version": "==20.1.0"
+        },
+        "irc3": {
+            "hashes": [
+                "sha256:603782d669422804674442cfc097e5c8f1c9d82bee8dac67e28669220af4a601",
+                "sha256:fe3afa945d4328919aa3f00ccba56644162681a4cd6dcdf9a4538b7f30258e38"
+            ],
+            "index": "pypi",
+            "version": "==1.1.10"
         },
         "jaraco.collections": {
             "hashes": [
@@ -820,11 +834,19 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:48e7fafa40319d358848e1bc6809b208340fafe2096f1725d05d67443d0483d1",
-                "sha256:bee28b5e56addb8226c96f7f13ac28cb4c301dd5ea8a6ca179c0b9835e032825"
+                "sha256:8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11",
+                "sha256:de7df1803967d2c2a98e4b11bb7d6bd9210474c46e8a0401514e3a42a75ebde4"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==2.0.3"
+            "version": "==2.0.4"
+        },
+        "venusian": {
+            "hashes": [
+                "sha256:06e7385786ad3a15c70740b2af8d30dfb063a946a851dcb4159f9e2a2302578f",
+                "sha256:f6842b7242b1039c0c28f6feef29016e7e7dd3caaeb476a193acf737db31ee38"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==3.0.0"
         },
         "zict": {
             "hashes": [

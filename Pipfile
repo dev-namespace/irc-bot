@@ -8,6 +8,7 @@ irc = "*"
 click = "*"
 hupper = "*"
 pystore = "*"
+irc3 = "*"
 
 [dev-packages]
 

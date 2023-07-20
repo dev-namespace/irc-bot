@@ -4,3 +4,4 @@
 tmp/
 store
 *.db
+config.ini
