@@ -42,7 +42,7 @@ def close_storage():
     store = None
     print("[*] Storage closed gracefully.")
 
-def store_message(event, channel):
+def store_message(irc):
     date = get_cest_datetime()
 
     with conn:
@@ -50,7 +50,7 @@ def store_message(event, channel):
         c.execute('''
             INSERT INTO Messages (message, channel, user, timestamp)
             VALUES (?, ?, ?, ?)
-        ''', (event.arguments[0], channel, event.source.nick, date))
+        ''', (irc.msg, irc.channel, irc.source, date))
 
 def get_messages(channel, limit = 100):
     with conn:
