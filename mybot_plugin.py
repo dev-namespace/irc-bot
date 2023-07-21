@@ -2,8 +2,8 @@
 from irc3.plugins.command import command
 import irc3
 
+from random import randint
 from lib.utils import format_time, get_function_arity_range
-
 from lib.storage import (
     init_storage,
     close_storage,
@@ -26,10 +26,12 @@ class Plugin:
     @irc3.event(irc3.rfc.JOIN)
     def say_hi(self, mask, channel, **kw):
         """Say hi when someone join a channel"""
+        irc = IRCMediator(self.bot, mask, channel)
+        greeting = greetings[randint(0, len(greetings) - 1)]
         if mask.nick != self.bot.nick:
-            self.bot.privmsg(channel, 'Hi %s!' % mask.nick)
-        else:
-            self.bot.privmsg(channel, 'Hi!')
+            irc.send(irc.channel, greeting.replace("<username>", irc.source))
+            communicate_notes(irc)
+            communicate_news(irc)
 
     @irc3.event(irc3.rfc.PRIVMSG)
     def handle_message(self, mask, target, data, **kw):
@@ -39,8 +41,31 @@ class Plugin:
             store_message(irc)
             parse_and_execute(irc)
 
+def communicate_notes(irc):
+    notes = get_user_notes(irc.source,  irc.channel)
+    print("notes: %s", notes)
+
+    if len(notes) > 0:
+        irc.send(irc.channel, "you have %d note/s %s." % (len(notes), irc.source))
+    for note in notes:
+        irc.send(irc.channel, "> %s said: %s" % (note['source'], note['text']))
+    for note in notes:
+        delete_note(note['id'])
+
+def communicate_news(irc):
+    news = get_unread_news(irc.source, irc.channel)
+
+    if len(news) > 0:
+        irc.send(irc.channel, "%s: There's news! (%s)" % (irc.source, len(news)))
+
+    for item in news:
+        time = format_time(item['timestamp'])
+        irc.send(irc.channel, "> [%s]: %s" % (time, item['text']))
+
+    mark_news_as_read(irc.source, irc.channel, list(map(lambda n: n['id'], news)))
+
 class IRCMediator:
-    def __init__(self, bot, mask, target, data):
+    def __init__(self, bot, mask, target, data = None):
         self.bot = bot
         self.mask = mask
         self.target = target
