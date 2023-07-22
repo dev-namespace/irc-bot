@@ -123,7 +123,7 @@ def help(irc, command=None):
     irc.send(irc.source, " ")
     commands = list(command_info.keys())
     irc.send(irc.source, "Select a command you'd like help with.")
-    irc.send(irc.source, "> @boy help <command>")
+    irc.send(irc.source, "> !help <command>")
     irc.send(irc.source, " ")
     irc.send(irc.source, "Available commands:")
     for command in commands:
