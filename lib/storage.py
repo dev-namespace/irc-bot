@@ -17,7 +17,7 @@ def init_storage():
 
     # remove expired news for #wispers-test
     news = store.get('%s/news' % "#wispers", [])
-    news = list(filter(lambda n: n['timestamp'] > get_cest_datetime() - datetime.timedelta(days=n["expiry_days"]), news))
+    news = list(filter(lambda n: n['timestamp'] > get_cest_datetime() - datetime.timedelta(days=int(n["expiry_days"])), news))
     store['%s/news' % "#wispers"] = news
 
     with conn:
@@ -120,7 +120,7 @@ def store_news(source, text, channel, expiry_days=10):
 
 def get_news(channel, filter_expired = True):
     news = store.get('%s/news' % channel, [])
-    return list(filter(lambda n: n['timestamp'] >= get_cest_datetime() - datetime.timedelta(days=n["expiry_days"]), news))
+    return list(filter(lambda n: n['timestamp'] >= get_cest_datetime() - datetime.timedelta(days=int(n["expiry_days"])), news))
 
 def get_unread_news(user, channel, filter_expired = True):
     news = get_news(channel, filter_expired)
